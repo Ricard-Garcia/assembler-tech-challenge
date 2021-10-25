@@ -15,15 +15,15 @@ export default function Router() {
     <BrowserRouter>
       <Switch>
         {/* Public routes */}
-        <PublicRoute>
-          <SignIn path={PAGES.SIGN_IN} exact />
+        <PublicRoute path={PAGES.SIGN_IN} exact>
+          <SignIn />
         </PublicRoute>
         {/* Private routes */}
-        <PrivateRoute>
-          <SignUp path={PAGES.SING_UP} exact />
+        <PrivateRoute path={PAGES.SIGN_UP} exact>
+          <SignUp />
         </PrivateRoute>
-        <PrivateRoute>
-          <Home path={PAGES.HOME} exact />
+        <PrivateRoute path={PAGES.HOME} exact>
+          <Home />
         </PrivateRoute>
       </Switch>
     </BrowserRouter>

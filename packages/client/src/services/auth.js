@@ -28,6 +28,10 @@ export const auth = firebase.auth();
 
 // Firebase functions
 
+export function singUpWithEmailAndPassword(email, password) {
+  return auth.createUserWithEmailAndPassword(email, password);
+}
+
 export function signInWithEmailAndPassword(email, password) {
   return auth.signInWithEmailAndPassword(email, password);
 }
@@ -35,10 +39,6 @@ export function signInWithEmailAndPassword(email, password) {
 export async function signIn(email, password) {
   const signInResponse = await signInWithEmailAndPassword(email, password);
   return signInResponse;
-}
-
-export function singUpWithEmailAndPassword(email, password) {
-  return auth.createUserWithEmailAndPassword(email, password);
 }
 
 export function signOut() {
