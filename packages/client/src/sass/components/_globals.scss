@@ -1,0 +1,74 @@
+// Test guidelines
+* {
+  // Avoid text selection
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  // Prevent light blue background in autocompleted inputs
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+
+  // Guides
+  // outline: 2px solid blue;
+}
+
+input,
+input:before,
+input:after {
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
+
+// body {
+//   height: 100vh;
+//   margin: 0;
+//   #root {
+//     height: 100%;
+//   }
+// }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+a {
+  color: black;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  font-weight: normal;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: unset;
+}
+
+button:active {
+  outline: 0;
+}

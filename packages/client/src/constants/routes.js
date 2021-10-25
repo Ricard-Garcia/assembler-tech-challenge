@@ -3,6 +3,8 @@ const { API_MAIN_ROUTE } = process.env;
 // PAGES
 export const PAGES = {
   HOME: "/",
+  SIGN_IN: "/sign-in",
+  SIGN_UP: "/sign-up",
   FOUND: "/found",
   NOT_FOUND: "/not-found",
 };
