@@ -1,7 +1,7 @@
 // SERVER ENDPOINTS
 const SERVER = {
   REGISTER: "/register",
-  REGISTER: "/authenticate",
+  AUTHENTICATE: "/authenticate",
 };
 
 module.exports = { SERVER };
