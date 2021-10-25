@@ -18,10 +18,10 @@ export default function Router() {
         <PublicRoute path={PAGES.SIGN_IN} exact>
           <SignIn />
         </PublicRoute>
-        {/* Private routes */}
-        <PrivateRoute path={PAGES.SIGN_UP} exact>
+        <PublicRoute path={PAGES.SIGN_UP} exact>
           <SignUp />
-        </PrivateRoute>
+        </PublicRoute>
+        {/* Private routes */}
         <PrivateRoute path={PAGES.HOME} exact>
           <Home />
         </PrivateRoute>
