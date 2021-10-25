@@ -19,7 +19,7 @@ const memeSchema = new Schema(
       ref: "user",
       required: [true, "userID is required"],
     },
-    likedBy: [{ type: mongoose.Schemma.Types.ObjectId, ref: "user" }],
+    likedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
   },
   {
     timestamps: true,

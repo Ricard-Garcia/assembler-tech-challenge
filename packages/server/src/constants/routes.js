@@ -4,4 +4,4 @@ const SERVER = {
   AUTHENTICATE: "/authenticate",
 };
 
-module.exports = { SERVER };
+module.exports = { SERVER: SERVER };

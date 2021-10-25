@@ -1,12 +1,25 @@
 const { authController } = require("../controllers");
 const Router = require("express").Router;
-const SERVER = require("../constants/routes");
+const { SERVER } = require("../constants/routes");
+
+const {
+  authFirebaseMiddleware,
+  authRegisterMiddleware,
+} = require("../middlewares/firebase-middleware");
 
 const authRouter = Router();
 
 // Sign up
-authRouter.post(SERVER.REGISTER, authController.signUp);
+authRouter.post(
+  `${SERVER.REGISTER}`,
+  authRegisterMiddleware,
+  authController.signUp
+);
 // Sign in
-authRouter.post(SERVER.AUTHENTICATE, authController.signIn);
+authRouter.get(
+  `${SERVER.AUTHENTICATE}`,
+  authFirebaseMiddleware,
+  authController.signIn
+);
 
 module.exports = { authRouter };

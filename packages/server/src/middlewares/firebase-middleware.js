@@ -31,7 +31,7 @@ async function authFirebaseMiddleware(req, res, next) {
 }
 
 // Register user
-async function authRegisterMiddleWare(req, res, next) {
+async function authRegisterMiddleware(req, res, next) {
   try {
     const bearerToken = await getAuthToken(req.headers);
     const userClaims = await verifyAuthToken(bearerToken);
@@ -52,5 +52,5 @@ async function authRegisterMiddleWare(req, res, next) {
 
 module.exports = {
   authFirebaseMiddleware,
-  authRegisterMiddleWare,
+  authRegisterMiddleware,
 };

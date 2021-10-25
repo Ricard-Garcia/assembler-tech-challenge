@@ -1,6 +1,6 @@
 const db = require("../models");
 
-function signUp(req, res, next) {
+async function signUp(req, res, next) {
   // Target firebaseId
   // const {firebaseId} = req.user;
   try {
@@ -15,12 +15,13 @@ function signUp(req, res, next) {
       .status(200)
       .send({ message: `Successfully signed up user with email ${email}` });
   } catch (error) {
-    res.status(500).send({ error: error.message });
+    res.status(500).sen;
+    d({ error: error.message });
     next(error);
   }
 }
 
-function signIn(req, res, next) {
+async function signIn(req, res, next) {
   // Target firebaseId
   // const {firebaseId} = req.user;
   try {
