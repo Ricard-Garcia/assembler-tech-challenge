@@ -66,7 +66,7 @@ export default function SignUp() {
         </h1>
         <form className="row" onSubmit={formik.handleSubmit}>
           <Input
-            classNames="col col-6"
+            cols="6"
             label="First name"
             id="firstName"
             handleChange={formik.handleChange}
@@ -78,7 +78,7 @@ export default function SignUp() {
             isRequired
           />
           <Input
-            classNames="col col-6"
+            cols="6"
             label="Last name"
             id="lastName"
             handleChange={formik.handleChange}
@@ -102,7 +102,7 @@ export default function SignUp() {
             isRequired
           />
           <Input
-            classNames="col col-6"
+            cols="6"
             label="Password"
             id="password"
             type="password"
@@ -115,7 +115,7 @@ export default function SignUp() {
             isRequired
           />
           <Input
-            classNames="col col-6"
+            cols="6"
             label="Confirm password"
             id="confirmPassword"
             type="password"

@@ -7,6 +7,7 @@ import PrivateRoute from "../PrivateRoute";
 import SignIn from "../../../pages/SignIn";
 import SignUp from "../../../pages/SignUp";
 import Upload from "../../../pages/Upload";
+import SingleMeme from "../../../pages/SingleMeme";
 import Home from "../../../pages/Home";
 
 import { PAGES } from "../../../constants/routes";
@@ -25,6 +26,9 @@ export default function Router() {
         {/* Private routes */}
         <PrivateRoute path={PAGES.UPLOAD} exact>
           <Upload />
+        </PrivateRoute>
+        <PrivateRoute path={`${PAGES.SINGLE_MEME}/:id`} exact>
+          <SingleMeme />
         </PrivateRoute>
         <PrivateRoute path={PAGES.HOME} exact>
           <Home />

@@ -5,9 +5,10 @@ export const PAGES = {
   HOME: "/",
   SIGN_IN: "/sign-in",
   SIGN_UP: "/sign-up",
+  SINGLE_MEME: "/single-meme",
   FOUND: "/found",
-  NOT_FOUND: "/not-found",
   UPLOAD: "/upload",
+  NOT_FOUND: "/not-found",
 };
 
 // API
@@ -16,7 +17,8 @@ export const API = {
   PROFILE_PICTURE_API: "https://randomuser.me/api/",
   REGISTER: "/register",
   AUTHENTICATE: "/authenticate",
-  SEARCH: "/search",
   MEMES: "/memes",
   UPLOAD: "/upload",
+  FILE: "/file",
+  SEARCH: "/search",
 };

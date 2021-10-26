@@ -64,13 +64,22 @@ export default function Upload() {
     },
   });
 
+  // const memeFileOnChange = (event) => {
+  //   formik.setFieldValue("file", event.target.files[0]);
+  // };
+
   return (
     <Layout>
       <div className="upload-wrapper d-flex container-fluid row g-4 px-5 m-0">
         <h1 className="fnt-light fnt-thin col col-12 m-0 text-uppercase">
           Upload a meme
         </h1>
-        <div className="left-side col col-6">left</div>
+        <div className="left-side col col-6">
+          {/* <img
+            src="https://memegenerator.net/img/instances/60028393.jpg"
+            alt="Upload file"
+          /> */}
+        </div>
         <div className="right-side col col-6">
           <form className="row" onSubmit={formik.handleSubmit}>
             <Input
@@ -110,9 +119,9 @@ export default function Upload() {
               label="Meme file"
               id="memeFile"
               type="file"
-              handleChange={formik.handleChange}
+              // handleChange={memeFileOnChange}
               handleBlur={formik.handleBlur}
-              value={formik.values.file}
+              // value={formik.values.file}
               errorMessage={formik.errors.file}
               hasErrorMessage={formik.touched.file}
               disabled={isLoading}

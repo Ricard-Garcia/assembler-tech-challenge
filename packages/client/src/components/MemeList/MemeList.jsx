@@ -1,23 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 
 import MemeCard from "../MemeCard";
 
 export default function MemeList({ title, memes = [] }) {
-  const [listOfMemes, setListOfMemes] = useState(memes);
-
   return (
     <div className="container-fluid p-0">
       {title && <div className="fnt-title fnt-light px-5">{title}</div>}
 
       <div className="row m-0 p-0 memes-wrapper">
-        {listOfMemes.map((meme, index) => (
+        {memes.map((meme) => (
           <MemeCard
-            key={`meme-${index}`}
-            // memeId={meme._id}
-            memeUrl={
-              "https://media1.giphy.com/media/UVah1k9VydwNC4RdOT/giphy.gif"
-            }
-            // userId={meme.userId}
+            key={meme._id}
+            memeId={meme._id}
+            memeUrl={meme.url}
             cols="4"
           />
         ))}

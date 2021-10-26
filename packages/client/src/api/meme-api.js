@@ -31,12 +31,23 @@ export async function getAllMemes(api = makeMemeApi()) {
 // Upload meme
 export async function uploadMeme(memeData = {}, api = makeMemeApi()) {
   const token = await getCurrentUserToken();
-  console.log("memeData: ", memeData);
 
-  return api.post(``, memeData, {
+  if (memeData.url) {
+    console.log("memeData has url: ", memeData);
+    return api.post(`${API.UPLOAD}`, memeData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+  console.log("memeData has file: ", memeData);
+
+  return api.post(`${API.UPLOAD}${API.FILE}`, memeData, {
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "multipart/form-data",
+      "Content-Type": `multipart/form-data"`,
     },
   });
 }

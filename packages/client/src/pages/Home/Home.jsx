@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 import "./Home.scss";
 
 import { PAGES } from "../../constants/routes";
+import { getAllMemes } from "../../api/meme-api";
 
 import Layout from "../../components/Layout";
 import Button from "../../components/Button";
@@ -11,12 +12,28 @@ import MemeList from "../../components/MemeList";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
+  const [memesList, setMemesList] = useState([]);
 
   const location = useLocation();
 
   const history = useHistory();
 
-  const hardcodedMemes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const loadAllMemes = async () => {
+    try {
+      const memes = await getAllMemes();
+      setMemesList(memes.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    loadAllMemes();
+  }, []);
+
+  useEffect(() => {
+    console.log(memesList);
+  }, [memesList]);
 
   return (
     <Layout>
@@ -44,7 +61,6 @@ export default function Home() {
           className="w-100 custom-searchbar fnt-light fnt-thin fx-border-radius p-4 mb-5 text-uppercase"
           name="searchbar"
           type="text"
-          autoFocus
         />
         {/* Users & tags */}
         <div className="users-tags-wrapper row p-0 m-0 col col-6 row p-0 m-0">
@@ -53,7 +69,7 @@ export default function Home() {
         </div>
       </div>
       <div className="home-bottom container-fluid p-0">
-        <MemeList memes={hardcodedMemes} />
+        <MemeList memes={memesList} />
       </div>
     </Layout>
   );
