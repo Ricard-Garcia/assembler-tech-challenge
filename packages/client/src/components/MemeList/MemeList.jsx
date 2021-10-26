@@ -9,12 +9,14 @@ export default function MemeList({ title, memes = [] }) {
     <div className="container-fluid p-0">
       {title && <div className="fnt-title fnt-light px-5">{title}</div>}
 
-      <div className="row m-0 p-0 g-4 memes-wrapper">
+      <div className="row m-0 p-0 memes-wrapper">
         {listOfMemes.map((meme, index) => (
           <MemeCard
             key={`meme-${index}`}
             // memeId={meme._id}
-            // memeUrl={meme.url}
+            memeUrl={
+              "https://media1.giphy.com/media/UVah1k9VydwNC4RdOT/giphy.gif"
+            }
             // userId={meme.userId}
             cols="4"
           />

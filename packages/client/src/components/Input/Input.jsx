@@ -7,6 +7,7 @@ export default function Input({
   id,
   type = "text",
   classNames = "",
+  cols = "12",
   value = "",
   placeholder,
   handleChange = () => {},
@@ -17,7 +18,7 @@ export default function Input({
   isRequired,
   ...props
 }) {
-  const inputClasses = `${classNames} custom-input-wrapper d-flex flex-column`;
+  const inputClasses = `${classNames} col col-${cols} custom-input-wrapper d-flex flex-column`;
 
   return (
     <div className={inputClasses}>

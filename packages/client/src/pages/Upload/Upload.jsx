@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { PAGES } from "../../constants/routes";
+import { uploadMeme } from "../../api/meme-api";
 
 import uploadSchema from "./upload-schema";
 
@@ -17,19 +18,29 @@ export default function Upload() {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      name: "",
+      tag: "",
+      url: "",
     },
     validationSchema: uploadSchema,
     onSubmit: async (uploadState) => {
       setIsLoading(true);
       try {
+        const formData = {
+          name: uploadState.name,
+          tag: uploadState.tag,
+          url: uploadState.url,
+        };
+
+        // Upload meme to database
+        await uploadMeme(formData);
+
         // Redirect to home
         setTimeout(() => {
           history.push(PAGES.HOME);
         }, 300);
       } catch (error) {
-        console.log("Couldn't upload track: ", error);
+        console.log("Couldn't upload meme: ", error);
       }
     },
   });
@@ -44,31 +55,42 @@ export default function Upload() {
         <div className="right-side col col-6">
           <form className="row" onSubmit={formik.handleSubmit}>
             <Input
-              label="Email"
-              id="email"
-              type="email"
+              label="Name"
+              id="name"
+              cols="8"
               handleChange={formik.handleChange}
               handleBlur={formik.handleBlur}
-              value={formik.values.email}
-              errorMessage={formik.errors.email}
-              hasErrorMessage={formik.touched.email}
+              value={formik.values.name}
+              errorMessage={formik.errors.name}
+              hasErrorMessage={formik.touched.name}
               disabled={isLoading}
               isRequired
             />
             <Input
-              label="Password"
-              id="password"
-              type="password"
+              label="tag"
+              id="tag"
+              cols="4"
               handleChange={formik.handleChange}
               handleBlur={formik.handleBlur}
-              value={formik.values.password}
-              errorMessage={formik.errors.password}
-              hasErrorMessage={formik.touched.password}
+              value={formik.values.tag}
+              errorMessage={formik.errors.tag}
+              hasErrorMessage={formik.touched.tag}
               disabled={isLoading}
-              isRequired
+            />
+            <Input
+              label="Meme url"
+              id="memeUrl"
+              handleChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
+              value={formik.values.memeUrl}
+              errorMessage={formik.errors.memeUrl}
+              hasErrorMessage={formik.touched.memeUrl}
+              disabled={isLoading}
             />
             <div className="buttons-wrapper d-flex justify-content-between align-items-center mt-3">
-              <Button backButton>Back</Button>
+              <Button isDark isBackButton>
+                Back
+              </Button>
               <Button submitButton>Upload</Button>
             </div>
           </form>

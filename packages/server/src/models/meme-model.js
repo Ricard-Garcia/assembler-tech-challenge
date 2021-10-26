@@ -4,6 +4,11 @@ const { Schema } = require("mongoose");
 
 const memeSchema = new Schema(
   {
+    name: {
+      type: String,
+      trim: true,
+      required: [true, " first name is required"],
+    },
     url: {
       type: String,
       trim: true,
