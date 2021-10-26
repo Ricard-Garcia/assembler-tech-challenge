@@ -9,6 +9,11 @@ const memeSchema = new Schema(
       trim: true,
       required: [true, "Meme name is required"],
     },
+    tagId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "tag",
+      required: [true, "Tag is required"],
+    },
     url: {
       type: String,
       trim: true,
@@ -23,11 +28,6 @@ const memeSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
       required: [true, "userID is required"],
-    },
-    tagId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "tag",
-      required: [true, "Tag is required"],
     },
   },
   {

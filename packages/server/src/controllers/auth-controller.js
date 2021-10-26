@@ -1,10 +1,9 @@
 const db = require("../models");
 
+// Sign up
 async function signUp(req, res, next) {
-  // Target request body
   const { firstName, lastName, email, profilePicture } = req.body;
   try {
-    console.log("BODY >>>>> ", req.body);
     await db.User.create({
       ...req.user,
       firstName,
@@ -25,10 +24,9 @@ async function signUp(req, res, next) {
   }
 }
 
+// Sign in
 async function signIn(req, res, next) {
-  // Target firebaseId
   const { firebaseId } = req.user;
-
   try {
     const data = await db.User.findOne(
       { firebaseId },
@@ -38,7 +36,6 @@ async function signIn(req, res, next) {
       .status(200)
       .send({ message: "Successfully signed in.", data: data });
   } catch (error) {
-    console.log("NOT REGISTERING");
     res.status(500).send({
       message: "Couldn't sign in.",
       error: error.message,

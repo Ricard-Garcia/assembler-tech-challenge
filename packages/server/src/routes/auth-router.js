@@ -15,6 +15,7 @@ authRouter.post(
   authRegisterMiddleware,
   authController.signUp
 );
+
 // Sign in
 authRouter.get(
   `${SERVER.AUTHENTICATE}`,
