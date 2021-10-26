@@ -15,4 +15,4 @@ function getInitialMemes() {
   ];
 }
 
-module.exports = { getInitialUsers };
+module.exports = { getInitialMemes };

@@ -1,4 +1,6 @@
+const db = require("../models");
 const { getInitialUsers } = require("./initial/initial-users");
+
 const { getInitialMemes } = require("./initial/initial-memes");
 const { getInitialTags } = require("./initial/initial-tags");
 
