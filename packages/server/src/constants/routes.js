@@ -3,8 +3,8 @@ const SERVER = {
   API: "/api",
   REGISTER: "/register",
   AUTHENTICATE: "/authenticate",
-  MEME: "/meme",
-  TAG: "/tag",
+  MEMES: "/memes",
+  TAGS: "/tags",
 };
 
 module.exports = { SERVER: SERVER };

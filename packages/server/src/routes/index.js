@@ -1,5 +1,5 @@
-const { authRouter } = require("./auth-router");
-const { memeRouter } = require("./meme-router");
-const { tagRouter } = require("./tag-router");
+const { authRouter } = require("./auth-routes");
+const { memeRouter } = require("./meme-routes");
+// const { tagRouter } = require("./tag-routes");
 
-module.exports = { authRouter, memeRouter, tagRouter };
+module.exports = { authRouter, memeRouter /* , tagRouter */ };

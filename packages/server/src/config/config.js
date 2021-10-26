@@ -8,6 +8,9 @@ const {
   MONGO_DB_URL_DEVELOPMENT,
   MONGO_DB_URL_TEST,
   PORT,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET,
+  CLOUDINARY_NAME,
 } = process.env;
 
 const CONFIG = {
@@ -18,6 +21,11 @@ const CONFIG = {
     db: {
       url: MONGO_DB_URL_PRODUCTION,
     },
+    cloudinary: {
+      key: CLOUDINARY_API_KEY,
+      secret: CLOUDINARY_API_SECRET,
+      name: CLOUDINARY_NAME,
+    },
   },
   development: {
     app: {
@@ -26,6 +34,11 @@ const CONFIG = {
     db: {
       url: MONGO_DB_URL_DEVELOPMENT,
     },
+    cloudinary: {
+      key: CLOUDINARY_API_KEY,
+      secret: CLOUDINARY_API_SECRET,
+      name: CLOUDINARY_NAME,
+    },
   },
   test: {
     app: {
@@ -33,6 +46,11 @@ const CONFIG = {
     },
     db: {
       url: MONGO_DB_URL_TEST,
+    },
+    cloudinary: {
+      key: CLOUDINARY_API_KEY,
+      secret: CLOUDINARY_API_SECRET,
+      name: CLOUDINARY_NAME,
     },
   },
 };

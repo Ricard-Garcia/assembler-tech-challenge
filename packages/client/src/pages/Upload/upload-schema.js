@@ -13,7 +13,10 @@ const uploadSchema = Yup.object().shape({
       "Tag not avaliable"
     )
     .required("At least one tag should be declared"),
-  url: Yup.string().url("Not a valid URL"),
+  url: Yup.string().matches(
+    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+    "Enter correct url!"
+  ),
 });
 
 export default uploadSchema;

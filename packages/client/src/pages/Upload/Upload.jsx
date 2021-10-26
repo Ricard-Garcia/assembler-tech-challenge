@@ -21,16 +21,35 @@ export default function Upload() {
       name: "",
       tag: "",
       url: "",
+      file: "",
     },
     validationSchema: uploadSchema,
     onSubmit: async (uploadState) => {
+      // Make sure a meme is referenced
+      if (!uploadState.url && !uploadState.file) {
+        console.log("You should choose at least one upload option");
+        return "error";
+      }
+
       setIsLoading(true);
+
       try {
-        const formData = {
+        let formData = {
           name: uploadState.name,
           tag: uploadState.tag,
-          url: uploadState.url,
         };
+        // Add url if set
+        if (uploadState.url && !uploadState.file) {
+          formData.url = uploadState.url;
+        }
+        // If only file is uploaded
+        else if (!uploadState.url && uploadState.file) {
+          formData.file = uploadState.file;
+        }
+        // If both are set prioritize file
+        else {
+          formData.file = uploadState.file;
+        }
 
         // Upload meme to database
         await uploadMeme(formData);
@@ -79,12 +98,23 @@ export default function Upload() {
             />
             <Input
               label="Meme url"
-              id="memeUrl"
+              id="url"
               handleChange={formik.handleChange}
               handleBlur={formik.handleBlur}
-              value={formik.values.memeUrl}
-              errorMessage={formik.errors.memeUrl}
-              hasErrorMessage={formik.touched.memeUrl}
+              value={formik.values.url}
+              errorMessage={formik.errors.url}
+              hasErrorMessage={formik.touched.url}
+              disabled={isLoading}
+            />
+            <Input
+              label="Meme file"
+              id="memeFile"
+              type="file"
+              handleChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
+              value={formik.values.file}
+              errorMessage={formik.errors.file}
+              hasErrorMessage={formik.touched.file}
               disabled={isLoading}
             />
             <div className="buttons-wrapper d-flex justify-content-between align-items-center mt-3">

@@ -17,6 +17,6 @@ export const API = {
   REGISTER: "/register",
   AUTHENTICATE: "/authenticate",
   SEARCH: "/search",
-  MEME: "/meme",
+  MEMES: "/memes",
   UPLOAD: "/upload",
 };
