@@ -4,9 +4,9 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import PublicRoute from "../PublicRoute";
 import PrivateRoute from "../PrivateRoute";
 
-import SignIn from "../../pages/SignIn";
-import SignUp from "../../pages/SignUp";
-import Home from "../../pages/Home";
+import SignIn from "../../../pages/SignIn";
+import SignUp from "../../../pages/SignUp";
+import Home from "../../../pages/Home";
 
 import { PAGES } from "../../../constants/routes";
 

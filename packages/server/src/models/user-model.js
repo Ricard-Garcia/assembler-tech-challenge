@@ -24,6 +24,15 @@ const userSchema = new Schema(
       },
       required: [true, "User email is required"],
     },
+    profilePicture: {
+      type: String,
+      trim: true,
+      validate: {
+        validator: (value) => validator.isURL(value),
+        message: () => "Profile picture url is not valid",
+      },
+      required: [true, "Profile picture url is required"],
+    },
     firebaseId: {
       type: String,
       trim: true,

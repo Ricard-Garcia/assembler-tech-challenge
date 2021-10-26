@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 
-import Input from "../../Input";
-import Button from "../../Button";
+import { PAGES } from "../../constants/routes";
 
-import { PAGES } from "../../../constants/routes";
-
-import { singUpWithEmailAndPassword } from "../../../services/auth";
-import { registerUser } from "../../../api/user-api";
+import { singUpWithEmailAndPassword } from "../../services/auth";
+import { registerUser } from "../../api/user-api";
 
 import signUpSchema from "./sign-up-schema";
+
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,6 +33,7 @@ export default function SignUp() {
           firstName: signUpState.firstName,
           lastName: signUpState.lastName,
           email: signUpState.email,
+          profilePicture: "www.ricardgarcia.xyz",
         };
 
         // Sign user up in Firebase
@@ -43,14 +44,11 @@ export default function SignUp() {
         // Create user in db
         await registerUser(formData);
 
-        setIsLoading(false);
-
         setTimeout(() => {
           history.push(PAGES.SIGN_IN);
-        }, 3000);
+        }, 1000);
       } catch (error) {
         console.log("Couldn't sign up: ", error);
-        setIsLoading(false);
       }
     },
   });

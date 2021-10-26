@@ -10,19 +10,21 @@ function makeRegisterApi() {
   });
 }
 
-// function makeAuthApi() {
-//   return axios.create({
-//     baseURL: `${API.MAIN}${API.AUTHENTICATE}`,
-//   });
-// }
-
-// Create user object
+// Sign up
 export async function registerUser(userData = {}, api = makeRegisterApi()) {
   const token = await getCurrentUserToken();
 
+  console.log(userData);
   return api.post(``, userData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+  });
+}
+
+// Sign in
+export function authenticateUser(token) {
+  return axios.get(`${API.MAIN}${API.AUTHENTICATE}`, {
+    headers: { Authorization: `Bearer ${token}` },
   });
 }

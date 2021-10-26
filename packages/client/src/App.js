@@ -1,6 +1,6 @@
 import "./App.css";
 
-import RouterWrapper from "./components/router/RouterWrapper";
+import RouterWrapper from "./components/Router/RouterWrapper";
 
 function App() {
   return (

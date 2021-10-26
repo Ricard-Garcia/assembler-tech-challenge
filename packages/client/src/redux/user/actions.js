@@ -1,15 +1,10 @@
-import { SET_SIGN_IN, SET_SIGN_OUT, SET_REGISTER } from "./types";
+import { SET_SIGN_IN, SET_SIGN_OUT } from "./types";
 
-export const signIn = (value) => ({
+export const signInAction = (value) => ({
   type: SET_SIGN_IN,
   payload: value,
 });
 
-export const register = (value) => ({
-  type: SET_REGISTER,
-  payload: value,
-});
-
-export const signOut = (value) => ({
+export const signOutAction = (value) => ({
   type: SET_SIGN_OUT,
 });
