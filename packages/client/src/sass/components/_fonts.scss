@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Switzer";
+  src: url("../../assets/fonts/Switzer/Switzer-Variable.woff2") format("woff2"),
+    url("../../assets/fonts/Switzer/Switzer-Variable.woff") format("woff"),
+    url("../../assets/fonts/Switzer/Switzer-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+* {
+  font-family: "Switzer";
+}
+
+// Weights
+.fnt-jumbo,
+.fnt-label,
+.fnt-bold {
+  font-weight: 800;
+}
+
+.fnt-caption,
+.fnt-error,
+.fnt-regular {
+  font-weight: 350;
+}
+
+.fnt-thin {
+  font-weight: 150;
+}
+
+// Sizes
+.fnt-jumbo {
+  font-size: 250px;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.fnt-title {
+  font-size: 80px;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.fnt-label {
+  font-size: 24px;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.fnt-text {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.fnt-caption,
+.fnt-error {
+  font-size: 9px;
+  line-height: 1;
+}
+
+// Overflow
+.truncate {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

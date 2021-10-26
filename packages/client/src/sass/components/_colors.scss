@@ -1,0 +1,41 @@
+$primaryColor: #e36728;
+$secondaryColor: #47c4c6;
+$lightColor: #f7e7df;
+$lightColor20: #f7e7df2e;
+$darkColor: #78320f;
+
+$mainGradient: linear-gradient(332deg, #e36728, #e67f29, #e8962a, #e9ac2a);
+
+// Background colors
+.bg-primary {
+  background: $primaryColor;
+}
+
+.bg-secondary {
+  background: $secondaryColor;
+}
+
+.bg-light {
+  background: $lightColor;
+}
+
+.bg-dark {
+  background: $darkColor;
+}
+
+// Font colors
+.fnt-primary {
+  color: $primaryColor;
+}
+
+.fnt-secondary {
+  color: $secondaryColor;
+}
+
+.fnt-light {
+  color: $lightColor;
+}
+
+.fnt-dark {
+  color: $darkColor;
+}

@@ -4,9 +4,9 @@ import RouterWrapper from "./components/Router/RouterWrapper";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <RouterWrapper />
-    </div>
+    </>
   );
 }
 

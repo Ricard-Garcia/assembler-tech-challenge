@@ -1,0 +1,12 @@
+@use "../../sass/components/colors" as c;
+
+.error-message {
+  color: darkred;
+}
+
+.custom-input {
+  border: none;
+  background: c.$lightColor20;
+  color: c.$lightColor;
+  height: 50px;
+}

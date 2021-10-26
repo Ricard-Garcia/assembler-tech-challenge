@@ -4,9 +4,11 @@ import { useLocation, useHistory } from "react-router-dom";
 import { PAGES } from "../../constants/routes";
 
 export default function Button({
+  classNames,
   submitButton,
   handleClick = () => {},
   isBackButton,
+  isDark,
   children,
 }) {
   const location = useLocation();
@@ -19,9 +21,14 @@ export default function Button({
     history.push(`${PAGES.HOME}`);
   };
 
+  const buttonClasses = `${classNames} btn text-uppercase px-4`;
   return (
     <button
-      className="btn btn-dark"
+      className={
+        !isDark
+          ? `${buttonClasses} btn-outline-light`
+          : `${buttonClasses} btn-outline-dark`
+      }
       type={submitButton ? "submit" : "button"}
       onClick={isBackButton ? goBack : handleClick}
     >

@@ -11,6 +11,7 @@ import { signInAction } from "../../redux/user/actions";
 
 import signInSchema from "./sign-in-in-schema";
 
+import Layout from "../../components/Layout";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
@@ -51,7 +52,7 @@ export default function SignIn() {
         // Redirect to home
         setTimeout(() => {
           history.push(PAGES.HOME);
-        }, 1000);
+        }, 300);
       } catch (error) {
         console.log("Couldn't sign in: ", error);
       }
@@ -59,44 +60,47 @@ export default function SignIn() {
   });
 
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <Input
-          label="Email"
-          id="email"
-          type="email"
-          handleChange={formik.handleChange}
-          handleBlur={formik.handleBlur}
-          value={formik.values.email}
-          errorMessage={formik.errors.email}
-          hasErrorMessage={formik.touched.email}
-          disabled={isLoading}
-          isRequired
-        />
-        <Input
-          label="Password"
-          id="password"
-          type="password"
-          handleChange={formik.handleChange}
-          handleBlur={formik.handleBlur}
-          value={formik.values.password}
-          errorMessage={formik.errors.password}
-          hasErrorMessage={formik.touched.password}
-          disabled={isLoading}
-          isRequired
-        />
-        <Button submitButton>Sign in</Button>
-        <p>
-          Not registered?
-          <Link to={PAGES.SIGN_UP}>
-            <strong> Sign up</strong>
-          </Link>
-        </p>
-        <Link to={PAGES.HOME}>
-          <strong>HOME</strong>
-        </Link>
-      </form>
-    </div>
+    <Layout>
+      <div className="form-wrapper fx-border mb-5 p-4">
+        <h1 className="fnt-title fnt-thin fnt-light mb-5 container-fluid px-0">
+          Sign In
+        </h1>
+        <form className="row" onSubmit={formik.handleSubmit}>
+          <Input
+            label="Email"
+            id="email"
+            type="email"
+            handleChange={formik.handleChange}
+            handleBlur={formik.handleBlur}
+            value={formik.values.email}
+            errorMessage={formik.errors.email}
+            hasErrorMessage={formik.touched.email}
+            disabled={isLoading}
+            isRequired
+          />
+          <Input
+            label="Password"
+            id="password"
+            type="password"
+            handleChange={formik.handleChange}
+            handleBlur={formik.handleBlur}
+            value={formik.values.password}
+            errorMessage={formik.errors.password}
+            hasErrorMessage={formik.touched.password}
+            disabled={isLoading}
+            isRequired
+          />
+          <div className="buttons-wrapper d-flex justify-content-between align-items-center mt-3">
+            <p className="fnt-light m-0">
+              Not registered?
+              <Link to={PAGES.SIGN_UP}>
+                <strong> Sign up</strong>
+              </Link>
+            </p>
+            <Button submitButton>Sign in</Button>
+          </div>
+        </form>
+      </div>
+    </Layout>
   );
 }

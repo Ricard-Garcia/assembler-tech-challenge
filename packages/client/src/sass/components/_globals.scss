@@ -1,4 +1,6 @@
-// Test guidelines
+@use "./colors" as c;
+
+// General
 * {
   // Avoid text selection
   -webkit-touch-callout: none;
@@ -15,9 +17,19 @@
   }
 
   // Guides
-  // outline: 2px solid blue;
+  outline: 2px solid blue;
 }
 
+body {
+  height: 100vh;
+  margin: 0;
+  #root {
+    height: 100%;
+    background: c.$mainGradient;
+  }
+}
+
+// Inputs
 input,
 input:before,
 input:after {
@@ -28,14 +40,6 @@ input:after {
   user-select: initial;
 }
 
-// body {
-//   height: 100vh;
-//   margin: 0;
-//   #root {
-//     height: 100%;
-//   }
-// }
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -44,6 +48,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+// Buttons & links
 a {
   color: black;
 }
@@ -71,4 +76,19 @@ button {
 
 button:active {
   outline: 0;
+}
+
+// Forms
+.form-wrapper {
+  width: 600px;
+}
+
+// Border
+.fx-border {
+  border: 2px solid c.$lightColor;
+  border-radius: 8px;
+}
+
+.fx-border-radius {
+  border-radius: 8px;
 }

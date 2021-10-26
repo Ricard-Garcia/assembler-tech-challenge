@@ -1,0 +1,13 @@
+@use "../../sass/components/colors" as c;
+
+.custom-searchbar {
+  border: none;
+  background: c.$lightColor20;
+  color: c.$lightColor;
+  font-size: 90px;
+  height: 100px;
+}
+
+.home-bottom {
+  margin-top: 200px;
+}

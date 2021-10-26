@@ -12,6 +12,7 @@ export const PAGES = {
 // API
 export const API = {
   MAIN: "http://localhost:4000/api",
+  PROFILE_PICTURE_API: "https://randomuser.me/api/",
   REGISTER: "/register",
   AUTHENTICATE: "/authenticate",
   SEARCH: "/search",
