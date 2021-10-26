@@ -1,5 +1,6 @@
 const { getInitialUsers } = require("./initial/initial-users");
 const { getInitialMemes } = require("./initial/initial-memes");
+const { getInitialTags } = require("./initial/initial-tags");
 
 async function seedUsers() {
   const users = getInitialUsers();
@@ -17,4 +18,12 @@ async function seedMemes() {
   await db.Meme.create([...memes]);
 }
 
-module.exports = { seedUsers, seedMemes };
+async function seedTags() {
+  const tags = getInitialTags();
+  // Delete previous documents
+  await db.Tag.deleteMany({});
+  // Insert inital values
+  await db.Tag.create([...tags]);
+}
+
+module.exports = { seedUsers, seedMemes, seedTags };

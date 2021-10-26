@@ -7,7 +7,7 @@ const memeSchema = new Schema(
     name: {
       type: String,
       trim: true,
-      required: [true, " first name is required"],
+      required: [true, "Meme name is required"],
     },
     url: {
       type: String,
