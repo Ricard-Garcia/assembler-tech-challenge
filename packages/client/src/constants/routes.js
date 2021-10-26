@@ -1,4 +1,4 @@
-const { API_MAIN_ROUTE } = process.env;
+// const { API_MAIN_ROUTE } = process.env;
 
 // PAGES
 export const PAGES = {
@@ -11,7 +11,7 @@ export const PAGES = {
 
 // API
 export const API = {
-  MAIN: API_MAIN_ROUTE,
+  MAIN: "http://localhost:4000/api",
   REGISTER: "/register",
   AUTHENTICATE: "/authenticate",
   SEARCH: "/search",

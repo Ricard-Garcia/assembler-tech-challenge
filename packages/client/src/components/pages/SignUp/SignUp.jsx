@@ -6,7 +6,10 @@ import Input from "../../Input";
 import Button from "../../Button";
 
 import { PAGES } from "../../../constants/routes";
+
+import { singUpWithEmailAndPassword } from "../../../services/auth";
 import { registerUser } from "../../../api/user-api";
+
 import signUpSchema from "./sign-up-schema";
 
 export default function SignUp() {
@@ -25,20 +28,29 @@ export default function SignUp() {
     validationSchema: signUpSchema,
     onSubmit: async (signUpState) => {
       setIsLoading(true);
-
       try {
-        const formData = new FormData();
-        formData.append("firstName", signUpState.firstName);
-        formData.append("lastName", signUpState.lastName);
-        formData.append("email", signUpState.email);
+        const formData = {
+          firstName: signUpState.firstName,
+          lastName: signUpState.lastName,
+          email: signUpState.email,
+        };
 
+        // Sign user up in Firebase
+        await singUpWithEmailAndPassword(
+          signUpState.email,
+          signUpState.password
+        );
+        // Create user in db
         await registerUser(formData);
 
+        setIsLoading(false);
+
         setTimeout(() => {
-          history.push(PAGES.HOME);
-        }, 2000);
+          history.push(PAGES.SIGN_IN);
+        }, 3000);
       } catch (error) {
         console.log("Couldn't sign up: ", error);
+        setIsLoading(false);
       }
     },
   });
@@ -56,6 +68,7 @@ export default function SignUp() {
           errorMessage={formik.errors.firstName}
           hasErrorMessage={formik.touched.firstName}
           disabled={isLoading}
+          isRequired
         />
         <Input
           label="Last name"
@@ -66,6 +79,7 @@ export default function SignUp() {
           errorMessage={formik.errors.lastName}
           hasErrorMessage={formik.touched.lastName}
           disabled={isLoading}
+          isRequired
         />
         <Input
           label="Email"
@@ -77,6 +91,7 @@ export default function SignUp() {
           errorMessage={formik.errors.email}
           hasErrorMessage={formik.touched.email}
           disabled={isLoading}
+          isRequired
         />
         <Input
           label="Password"
@@ -88,6 +103,7 @@ export default function SignUp() {
           errorMessage={formik.errors.password}
           hasErrorMessage={formik.touched.password}
           disabled={isLoading}
+          isRequired
         />
         <Input
           label="Confirm password"
@@ -99,6 +115,7 @@ export default function SignUp() {
           errorMessage={formik.errors.confirmPassword}
           hasErrorMessage={formik.touched.confirmPassword}
           disabled={isLoading}
+          isRequired
         />
         <div className="buttons-wrapper">
           <Button isBackButton>Back</Button>

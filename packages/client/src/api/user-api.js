@@ -18,12 +18,11 @@ function makeRegisterApi() {
 
 // Create user object
 export async function registerUser(userData = {}, api = makeRegisterApi()) {
-  const token = getCurrentUserToken();
+  const token = await getCurrentUserToken();
 
   return api.post(``, userData, {
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": `multipart/form-data"`,
     },
   });
 }

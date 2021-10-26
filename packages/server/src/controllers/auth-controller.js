@@ -2,28 +2,34 @@ const db = require("../models");
 
 async function signUp(req, res, next) {
   // Target firebaseId
-  // const {firebaseId} = req.user;
+  const { firebaseId } = req.user;
+  const { firstName, lastName, email } = req.body;
+
   try {
-    const { email } = req.body;
     await db.User.create({
       ...req.user,
-      ...req.body,
-      //   profilePicture: profilePictureUrl,
+      firstName,
+      lastName,
+      email,
+      profilePicture: "",
     });
 
     return res
       .status(200)
       .send({ message: `Successfully signed up user with email ${email}` });
   } catch (error) {
-    res.status(500).sen;
-    d({ error: error.message });
+    res.status(500).send({
+      message: "Couldn't sign up.",
+      error: error.message,
+    });
     next(error);
   }
 }
 
 async function signIn(req, res, next) {
   // Target firebaseId
-  // const {firebaseId} = req.user;
+  const { firebaseId } = req.user;
+
   try {
     const data = await db.User.findOne(
       { firebaseId },
@@ -33,7 +39,11 @@ async function signIn(req, res, next) {
       .status(200)
       .send({ message: "Successfully signed in.", data: data });
   } catch (error) {
-    res.status(500).send({ error: error.message });
+    console.log("NOT REGISTERING");
+    res.status(500).send({
+      message: "Couldn't sign in.",
+      error: error.message,
+    });
     next(error);
   }
 }
