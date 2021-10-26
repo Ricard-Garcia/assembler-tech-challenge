@@ -78,10 +78,32 @@ export default function SignUp() {
           hasErrorMessage={formik.touched.email}
           disabled={isLoading}
         />
-        <Input label="Password" id="password" type="password" />
-        <Input label="Confirm password" id="confirmPassword" type="password" />
-        <Button isBackButton>Back</Button>
-        <Button submitButton>Sign up</Button>
+        <Input
+          label="Password"
+          id="password"
+          type="password"
+          handleChange={formik.handleChange}
+          handleBlur={formik.handleBlur}
+          value={formik.values.password}
+          errorMessage={formik.errors.password}
+          hasErrorMessage={formik.touched.password}
+          disabled={isLoading}
+        />
+        <Input
+          label="Confirm password"
+          id="confirmPassword"
+          type="password"
+          handleChange={formik.handleChange}
+          handleBlur={formik.handleBlur}
+          value={formik.values.confirmPassword}
+          errorMessage={formik.errors.confirmPassword}
+          hasErrorMessage={formik.touched.confirmPassword}
+          disabled={isLoading}
+        />
+        <div className="buttons-wrapper">
+          <Button isBackButton>Back</Button>
+          <Button submitButton>Sign up</Button>
+        </div>
       </form>
     </div>
   );
