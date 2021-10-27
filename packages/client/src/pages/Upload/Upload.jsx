@@ -46,27 +46,22 @@ export default function Upload() {
           const formDataFile = new FormData();
           formDataFile.append("name", uploadState.name);
           formDataFile.append("tag", uploadState.tag);
-
           // If only file is uploaded
           if (!uploadState.url && uploadState.file) {
             formDataFile.append("file", uploadState.file);
             // Upload meme to database
-
             await uploadMeme(formDataFile);
           }
           // If both are set prioritize file
           else {
             formDataFile.append("file", uploadState.file);
             // Upload meme to database
-
             await uploadMeme(formDataFile);
           }
         }
 
         // Redirect to home
-        setTimeout(() => {
-          history.push(PAGES.HOME);
-        }, 300);
+        history.push(PAGES.HOME);
       } catch (error) {
         console.log("Couldn't upload meme: ", error);
       }

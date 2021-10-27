@@ -33,9 +33,9 @@ export default function Header() {
   };
 
   return (
-    <header className="header-wrapper d-flex justify-content-between align-items-center px-5">
+    <header className="header-wrapper d-flex justify-content-between align-items-center row px-5">
       <Link
-        className="fnt-label fnt-bold m-0"
+        className="fnt-label fnt-bold fnt-light-primary m-0 col-7"
         to={{
           pathname: `${PAGES.HOME}`,
           state: {
@@ -46,12 +46,12 @@ export default function Header() {
         Memerize
       </Link>
       {userState.isLogged && (
-        <div className="header-left d-flex align-items-center">
+        <div className="header-left d-flex align-items-center justify-content-between row col-5">
           {/* Categories */}
-          <div className="categoryies-wrapper">
+          <div className="categoryies-wrapper d-flex justify-content-between fnt-light-primary col col-4 p-0">
             {/* Funny */}
             <NavLink
-              className="fnt-text fnt-bold"
+              className="fnt-text fnt-regular text-uppercase"
               activeClassName="active-navlink"
               to={{
                 pathname: `${PAGES.CATEGORY}/funny`,
@@ -64,7 +64,7 @@ export default function Header() {
             </NavLink>
             {/* Angry */}
             <NavLink
-              className="fnt-text fnt-bold"
+              className="fnt-text fnt-regular text-uppercase"
               activeClassName="active-navlink"
               to={{
                 pathname: `${PAGES.CATEGORY}/angry`,
@@ -77,7 +77,7 @@ export default function Header() {
             </NavLink>
             {/* Sad */}
             <NavLink
-              className="fnt-text fnt-bold"
+              className="fnt-text fnt-regular text-uppercase"
               activeClassName="active-navlink"
               to={{
                 pathname: `${PAGES.CATEGORY}/sad`,
@@ -90,10 +90,10 @@ export default function Header() {
             </NavLink>
           </div>
 
-          <p className="fnt-text fnt-regular m-0">
+          <p className="fnt-text fnt-regular text-center m-0 col col-4 ">
             Welcome, <span className="fnt-bold">{userState.firstName}</span>
           </p>
-          <Button classNames="ms-3" handleClick={handleSignOut} isDark>
+          <Button classNames="col col-3" handleClick={handleSignOut} isDark>
             Sign out
           </Button>
         </div>

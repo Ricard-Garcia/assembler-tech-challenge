@@ -6,7 +6,7 @@ import { getTaggedMemes } from "../../api/meme-api";
 import { PAGES } from "../../constants/routes";
 
 import Layout from "../../components/Layout";
-import Button from "../../components/Button";
+import PageTitle from "../../components/PageTitle";
 import MemeList from "../../components/MemeList";
 
 export default function Home() {
@@ -39,16 +39,9 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="home-top w-100 px-5 d-flex justify-content-between align-items-center">
-        <h1 className="fnt-light fnt-thin m-0 text-uppercase container-fluid ">
-          Category:&nbsp;
-          <p className="fnt-bold d-inline-block"> {tagName}</p>
-        </h1>
-        <Button isBackButton isDark>
-          Back
-        </Button>
-      </div>
-      <div className="home-bottom container-fluid p-0">
+      <PageTitle title="Category&nbsp;" subtitle={tagName} />
+
+      <div className="page-bottom container-fluid p-0">
         {/* Found memes by tag */}
         <div className="found-wrapper">
           <MemeList memes={taggedMemes} />

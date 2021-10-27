@@ -1,4 +1,5 @@
 $primaryColor: #e36728;
+$lightPrimaryColor: #e9ac2a;
 $secondaryColor: #47c4c6;
 $lightColor: #f7e7df;
 $lightColor20: #f7e7df2e;
@@ -9,6 +10,10 @@ $mainGradient: linear-gradient(332deg, #e36728, #e67f29, #e8962a, #e9ac2a);
 // Background colors
 .bg-primary {
   background: $primaryColor;
+}
+
+.bg-light-primary {
+  background: $lightPrimaryColor;
 }
 
 .bg-secondary {
@@ -26,6 +31,10 @@ $mainGradient: linear-gradient(332deg, #e36728, #e67f29, #e8962a, #e9ac2a);
 // Font colors
 .fnt-primary {
   color: $primaryColor;
+}
+
+.fnt-light-primary {
+  color: $lightPrimaryColor;
 }
 
 .fnt-secondary {

@@ -65,20 +65,23 @@ async function searchTags(req, res, next) {
       { name: 1, _id: 1 }
     );
 
-    const data = await db.Meme.find(
-      {
-        tagId: tag[0]._id,
-      },
-      {
-        name: 1,
-        url: 1,
-        _id: 1,
-      }
-    );
+    if (tag[0] !== undefined) {
+      const data = await db.Meme.find(
+        {
+          tagId: tag[0]._id,
+        },
+        {
+          name: 1,
+          url: 1,
+          _id: 1,
+        }
+      );
 
-    return res
-      .status(200)
-      .send({ message: "Successfully searched tags", tags: data });
+      return res
+        .status(200)
+        .send({ message: "Successfully searched tags", tags: data });
+    }
+    return res.status(200).send({ message: "Couldn't searched tags" });
   } catch (error) {
     res.status(500).send({
       error: error.message,

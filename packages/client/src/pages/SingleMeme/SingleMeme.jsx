@@ -9,6 +9,7 @@ import { getMeme } from "../../api/meme-api";
 import "./SingleMeme.scss";
 
 import Layout from "../../components/Layout";
+import PageTitle from "../../components/PageTitle";
 import Button from "../../components/Button";
 
 export default function SingleMeme() {
@@ -40,16 +41,8 @@ export default function SingleMeme() {
     <Layout>
       {!isLoading && (
         <>
-          <div className="d-flex justify-content-between align-items-center mb-5 px-5 w-100">
-            <h1 className="fnt-light fnt-thin m-0 text-uppercase container-fluid p-0">
-              Meme overview
-            </h1>
-            <Button isBackButton isDark>
-              Back
-            </Button>
-          </div>
-
-          <div className="row container-fluid px-5">
+          <PageTitle title="Meme overview" />
+          <div className="container-fluid row mt-5 px-5">
             <div className="meme-left col col-6 ps-0">
               <img className="meme-image" src={meme.url} alt={meme.name} />
             </div>

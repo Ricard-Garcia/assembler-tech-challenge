@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { searchUsers, searchMemes, searchTags } from "../../api/search-api";
 
 import Layout from "../../components/Layout";
+import PageTitle from "../../components/PageTitle";
 import Button from "../../components/Button";
 import MemeList from "../../components/MemeList";
 
@@ -59,16 +60,8 @@ export default function Search() {
 
   return (
     <Layout>
-      <div className="home-top w-100 px-5 d-flex justify-content-between align-items-center">
-        <h1 className="fnt-light fnt-thin m-0 text-uppercase container-fluid ">
-          Found items with:&nbsp;
-          <p className="fnt-bold d-inline-block"> {searchQuery}</p>
-        </h1>
-        <Button isBackButton isDark>
-          Back
-        </Button>
-      </div>
-      <div className="home-bottom container-fluid p-0">
+      <PageTitle title="Found items with:&nbsp;" subtitle={searchQuery} />
+      <div className="page-bottom container-fluid p-0">
         {/* Found users */}
         <div className="found-wrapper">
           <p className="fnt-label fnt-light px-5">Found users</p>

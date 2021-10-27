@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 
 import "./Home.scss";
@@ -11,7 +11,7 @@ import { getAllTags } from "../../api/tag-api";
 import { getAllMemes } from "../../api/meme-api";
 
 import Layout from "../../components/Layout";
-import Button from "../../components/Button";
+import PageTitle from "../../components/PageTitle";
 import MemeList from "../../components/MemeList";
 
 export default function Home() {
@@ -19,8 +19,6 @@ export default function Home() {
   const [usersList, setUsersList] = useState([]);
   const [tagsList, setTagsList] = useState([]);
   const [memesList, setMemesList] = useState([]);
-
-  const location = useLocation();
 
   const history = useHistory();
 
@@ -84,21 +82,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="home-top w-100 px-5 d-flex justify-content-between align-items-center">
-        <h1 className="fnt-light fnt-thin m-0 text-uppercase">
-          Memerize home page
-        </h1>
-        <Link
-          to={{
-            pathname: `${PAGES.UPLOAD}`,
-            state: {
-              referrer: location.pathname,
-            },
-          }}
-        >
-          <Button>Upload meme</Button>
-        </Link>
-      </div>
+      <PageTitle title="Memerize home page" isHome />
       <div className="mt-5 home-middle container-fluid px-5 row p-0 m-0">
         <form className="px-0" onSubmit={formik.handleSubmit}>
           {/* Searchbar */}
@@ -116,7 +100,7 @@ export default function Home() {
           />
         </form>
         {/* Users & tags */}
-        <div className="users-tags-wrapper row p-0 m-0 col col-6 row p-0 m-0">
+        <div className="row p-0 m-0 col col-6 row p-0 m-0">
           <div className="col col-6 p-0">
             <p className="fnt-label fnt-light">Users list</p>
             {usersList.map((user) => (
@@ -135,7 +119,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="home-bottom container-fluid p-0">
+      <div className="page-bottom container-fluid p-0">
         <MemeList memes={memesList} />
       </div>
     </Layout>
