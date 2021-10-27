@@ -32,7 +32,9 @@ export default function Upload() {
     onSubmit: async (uploadState) => {
       // Make sure a meme is referenced
       if (!uploadState.url && !uploadState.file) {
-        return console.log("You should choose at least one upload option");
+        return toast("You should choose at least one upload option", {
+          type: "error",
+        });
       }
 
       setIsLoading(true);
@@ -134,7 +136,6 @@ export default function Upload() {
               type="file"
               handleChange={memeFileOnChange}
               handleBlur={formik.handleBlur}
-              // value={formik.values.file}
               errorMessage={formik.errors.file}
               hasErrorMessage={formik.touched.file}
               disabled={isLoading}

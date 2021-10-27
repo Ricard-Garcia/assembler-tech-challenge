@@ -11,7 +11,6 @@ const signUpSchema = Yup.object().shape({
     .max(50, "The last name is too long!")
     .matches(/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/, "Only letters accepted")
     .required("The last name is required"),
-  //   birthDate: Yup.date("Not a valid date").required("The birthdate is required"),
   email: Yup.string()
     .email("This must be a valid email address")
     .required("The email is required"),

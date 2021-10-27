@@ -136,7 +136,6 @@ async function getTaggedMemes(req, res, next) {
       { name: 1, _id: 1 }
     );
 
-    console.log("FOUND>>>>>", foundTag);
     const data = await db.Meme.find(
       {
         tagId: foundTag[0]._id,

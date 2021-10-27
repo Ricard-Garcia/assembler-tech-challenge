@@ -35,7 +35,7 @@ export default function Header() {
   return (
     <header className="header-wrapper d-flex justify-content-between align-items-center row px-5">
       <Link
-        className="fnt-label fnt-bold fnt-light-primary m-0 col-7"
+        className="fnt-label fnt-bold fnt-light-primary m-0 col-6"
         to={{
           pathname: `${PAGES.HOME}`,
           state: {
@@ -46,9 +46,9 @@ export default function Header() {
         Memerize
       </Link>
       {userState.isLogged && (
-        <div className="header-left d-flex align-items-center justify-content-between row col-5">
+        <div className="header-left d-flex align-items-center justify-content-between row col-6">
           {/* Categories */}
-          <div className="categoryies-wrapper d-flex justify-content-between fnt-light-primary col col-4 p-0">
+          <div className="categoryies-wrapper d-flex justify-content-between fnt-light-primary col col-5 p-0">
             {/* Funny */}
             <NavLink
               className="fnt-text fnt-regular text-uppercase"
@@ -87,6 +87,32 @@ export default function Header() {
               }}
             >
               Sad
+            </NavLink>
+            {/* Happy */}
+            <NavLink
+              className="fnt-text fnt-regular text-uppercase"
+              activeClassName="active-navlink"
+              to={{
+                pathname: `${PAGES.CATEGORY}/happy`,
+                state: {
+                  referrer: location.pathname,
+                },
+              }}
+            >
+              Happy
+            </NavLink>
+            {/* Art */}
+            <NavLink
+              className="fnt-text fnt-regular text-uppercase"
+              activeClassName="active-navlink"
+              to={{
+                pathname: `${PAGES.CATEGORY}/art`,
+                state: {
+                  referrer: location.pathname,
+                },
+              }}
+            >
+              Art
             </NavLink>
           </div>
 
