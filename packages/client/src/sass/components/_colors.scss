@@ -24,6 +24,10 @@ $mainGradient: linear-gradient(332deg, #e36728, #e67f29, #e8962a, #e9ac2a);
   background: $lightColor;
 }
 
+.bg-light-20 {
+  background: $lightColor20;
+}
+
 .bg-dark {
   background: $darkColor;
 }

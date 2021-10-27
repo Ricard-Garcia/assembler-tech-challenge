@@ -7,6 +7,8 @@ import { uploadMeme } from "../../api/meme-api";
 
 import uploadSchema from "./upload-schema";
 
+import "./Upload.scss";
+
 import Layout from "../../components/Layout";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -78,13 +80,15 @@ export default function Upload() {
         <h1 className="fnt-light fnt-thin col col-12 m-0 text-uppercase">
           Upload a meme
         </h1>
-        <div className="left-side col col-6">
-          {/* <img
-            src="https://memegenerator.net/img/instances/60028393.jpg"
-            alt="Upload file"
-          /> */}
+        <div className="meme-preview col col-6">
+          <div className="preview-wrapper bg-light-20">
+            <img
+              src="https://memegenerator.net/img/instances/60028393.jpg"
+              alt="Upload file"
+            />
+          </div>
         </div>
-        <div className="right-side col col-6">
+        <div className="col col-6">
           <form className="row" onSubmit={formik.handleSubmit}>
             <Input
               label="Name"

@@ -10,7 +10,7 @@ export default function Footer() {
       </div>
       <div className="col p-0">
         <p className="fnt-text fnt-bold text-end m-0 fnt-white">
-          Developed with love <br /> by Ricard Garcia
+          Developed with love by Ricard Garcia
         </p>
       </div>
     </footer>
