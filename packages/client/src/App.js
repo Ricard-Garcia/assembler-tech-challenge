@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 
 import "./App.css";
 
-import RouterWrapper from "./components/Router/RouterWrapper";
+import RouterWrapper from "./components/router/RouterWrapper";
 
 function App() {
   return (
