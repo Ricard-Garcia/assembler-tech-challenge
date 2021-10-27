@@ -27,32 +27,41 @@ export default function Upload() {
     onSubmit: async (uploadState) => {
       // Make sure a meme is referenced
       if (!uploadState.url && !uploadState.file) {
-        console.log("You should choose at least one upload option");
-        return "error";
+        return console.log("You should choose at least one upload option");
       }
 
       setIsLoading(true);
 
       try {
-        let formData = {
-          name: uploadState.name,
-          tag: uploadState.tag,
-        };
         // Add url if set
         if (uploadState.url && !uploadState.file) {
-          formData.url = uploadState.url;
-        }
-        // If only file is uploaded
-        else if (!uploadState.url && uploadState.file) {
-          formData.file = uploadState.file;
-        }
-        // If both are set prioritize file
-        else {
-          formData.file = uploadState.file;
-        }
+          let formDataJSON = {
+            name: uploadState.name,
+            tag: uploadState.tag,
+            url: uploadState.url,
+          };
+          // Upload meme to database
+          await uploadMeme(formDataJSON);
+        } else {
+          const formDataFile = new FormData();
+          formDataFile.append("name", uploadState.name);
+          formDataFile.append("tag", uploadState.tag);
 
-        // Upload meme to database
-        await uploadMeme(formData);
+          // If only file is uploaded
+          if (!uploadState.url && uploadState.file) {
+            formDataFile.append("file", uploadState.file);
+            // Upload meme to database
+
+            await uploadMeme(formDataFile);
+          }
+          // If both are set prioritize file
+          else {
+            formDataFile.append("file", uploadState.file);
+            // Upload meme to database
+
+            await uploadMeme(formDataFile);
+          }
+        }
 
         // Redirect to home
         setTimeout(() => {
@@ -64,9 +73,9 @@ export default function Upload() {
     },
   });
 
-  // const memeFileOnChange = (event) => {
-  //   formik.setFieldValue("file", event.target.files[0]);
-  // };
+  const memeFileOnChange = (event) => {
+    formik.setFieldValue("file", event.target.files[0]);
+  };
 
   return (
     <Layout>
@@ -92,7 +101,6 @@ export default function Upload() {
               errorMessage={formik.errors.name}
               hasErrorMessage={formik.touched.name}
               disabled={isLoading}
-              isRequired
             />
             <Input
               label="tag"
@@ -119,7 +127,7 @@ export default function Upload() {
               label="Meme file"
               id="memeFile"
               type="file"
-              // handleChange={memeFileOnChange}
+              handleChange={memeFileOnChange}
               handleBlur={formik.handleBlur}
               // value={formik.values.file}
               errorMessage={formik.errors.file}

@@ -8,9 +8,7 @@ const {
   authFirebaseMiddleware,
 } = require("../middlewares/firebase-middleware");
 
-const mdlUpload = upload.fields([{ name: "track" }]);
-
-const { multerMiddleware } = require("../middlewares/multer-middleware");
+const mdlUpload = upload.fields([{ name: "file" }]);
 
 const memeRouter = Router();
 

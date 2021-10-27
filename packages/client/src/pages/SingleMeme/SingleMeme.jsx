@@ -43,9 +43,15 @@ export default function SingleMeme() {
     <Layout>
       {!isLoading && (
         <>
-          <h1 className="fnt-light fnt-thin m-0 text-uppercase container-fluid px-5 mb-5">
-            Meme overview
-          </h1>
+          <div className="d-flex justify-content-between align-items-center mb-5 px-5 w-100">
+            <h1 className="fnt-light fnt-thin m-0 text-uppercase container-fluid ">
+              Meme overview
+            </h1>
+            <Button isBackButton isDark>
+              Back
+            </Button>
+          </div>
+
           <div className="row container-fluid px-5">
             <div className="meme-left col col-6 ps-0">
               <img className="meme-image" src={meme.url} alt={meme.name} />
@@ -70,11 +76,6 @@ export default function SingleMeme() {
                 <p className="fnt-light fnt-text fnt-regular">
                   {meme.tagId.name}
                 </p>
-              </div>
-              <div className="buttons-wrapper d-flex justify-content-end mt-5">
-                <Button isBackButton isDark>
-                  Back
-                </Button>
               </div>
             </div>
           </div>

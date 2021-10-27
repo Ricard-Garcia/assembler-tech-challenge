@@ -53,7 +53,7 @@ async function getAllMemes(req, res, next) {
 // Get upload meme
 async function uploadMeme(req, res, next) {
   try {
-    console.log("Meme upload req.file ", req.file);
+    console.log("Meme upload req.files ", req.files["file"][0]);
     console.log("Meme upload req.body ", req.body);
     // General settings
     const { firebaseId } = req.user;
@@ -67,11 +67,12 @@ async function uploadMeme(req, res, next) {
     };
 
     // Via input file
-    if (req.files !== undefined) {
+    if (req.files) {
       // Upload to cloudinary
-      const meme = req.file["meme"][0];
+      const meme = req.files["file"][0];
 
-      if (meme.mimetype === "audio/mpeg") {
+      console.log("MIMETYPE >>>>>>>>>>> ", meme.mimetype);
+      if (meme.mimetype === "image/gif") {
         const memeLocation = path.join(
           __dirname,
           "../",
@@ -86,7 +87,7 @@ async function uploadMeme(req, res, next) {
 
         const cloudMemeRes = await cloudinary.uploader.upload(memeLocation, {
           upload_preset: "memes-preset",
-          resource_type: "video",
+          resource_type: "image",
         });
 
         // delete uploaded file
@@ -119,7 +120,7 @@ async function uploadMeme(req, res, next) {
     }
   } catch (error) {
     res.status(500).send({
-      message: "Couldn't get the meme.",
+      message: "Couldn't upload the meme.",
       error: error.message,
     });
     next(error);

@@ -8,6 +8,7 @@ import { PAGES } from "../../constants/routes";
 import { signIn } from "../../services/auth";
 import { authenticateUser } from "../../api/user-api";
 import { signInAction } from "../../redux/user/actions";
+import { setLocalStorage } from "../../utils/localStorage";
 
 import signInSchema from "./sign-in-in-schema";
 
@@ -39,15 +40,19 @@ export default function SignIn() {
 
         // Change redux state
         const dbUser = (await authenticateUser(token)).data.data;
-        dispatch(
-          signInAction({
-            firstName: dbUser.firstName,
-            email: dbUser.email,
-            profilePicture: dbUser.profilePicture || "",
-            isLogged: true,
-            mongoId: dbUser._id,
-          })
-        );
+
+        const loggedUser = {
+          firstName: dbUser.firstName,
+          email: dbUser.email,
+          profilePicture: dbUser.profilePicture || "",
+          isLogged: true,
+          mongoId: dbUser._id,
+        };
+
+        // Add state to redux
+        dispatch(signInAction(loggedUser));
+        // Set local storage
+        // setLocalStorage(loggedUser, "User state");
 
         // Redirect to home
         setTimeout(() => {

@@ -27,7 +27,6 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 
 // Firebase functions
-
 export function singUpWithEmailAndPassword(email, password) {
   return auth.createUserWithEmailAndPassword(email, password);
 }
