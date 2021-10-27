@@ -33,7 +33,6 @@ export async function uploadMeme(memeData = {}, api = makeMemeApi()) {
   const token = await getCurrentUserToken();
 
   if (memeData.url) {
-    console.log("memeData has url: ", memeData);
     return api.post(`${API.UPLOAD}`, memeData, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -41,8 +40,6 @@ export async function uploadMeme(memeData = {}, api = makeMemeApi()) {
       },
     });
   }
-
-  console.log("memeData has file: ", memeData);
 
   return api.post(`${API.UPLOAD}${API.FILE}`, memeData, {
     headers: {
