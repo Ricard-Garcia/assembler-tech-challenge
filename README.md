@@ -211,4 +211,4 @@ A list of all dependencies & libraries needed to develop this application.
 
 ## ✨ Contributors
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section --> <table> <tr> </td> <td align="center"><a href="https://github.com/Ricard-Garcia"><img src="https://avatars.githubusercontent.com/u/15958524?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricard García</b></sub></a><br /><a href="https://github.com/rocket-team-webdev/wave/commits/develop?author=ricard-garcia" title="Code">💻</a> </td></tr></table>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section --> <table> <tr> </td> <td align="center"><a href="https://github.com/Ricard-Garcia"><img src="https://avatars.githubusercontent.com/u/15958524?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricard García</b></sub></a> </td></tr></table>
