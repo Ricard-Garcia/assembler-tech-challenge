@@ -71,7 +71,6 @@ async function uploadMeme(req, res, next) {
       // Upload to cloudinary
       const meme = req.files["file"][0];
 
-      console.log("MIMETYPE >>>>>>>>>>> ", meme.mimetype);
       if (meme.mimetype === "image/gif") {
         const memeLocation = path.join(
           __dirname,

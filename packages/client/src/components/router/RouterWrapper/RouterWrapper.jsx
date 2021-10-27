@@ -8,6 +8,7 @@ import SignIn from "../../../pages/SignIn";
 import SignUp from "../../../pages/SignUp";
 import Upload from "../../../pages/Upload";
 import SingleMeme from "../../../pages/SingleMeme";
+import Search from "../../../pages/Search";
 import Home from "../../../pages/Home";
 
 import { PAGES } from "../../../constants/routes";
@@ -24,6 +25,9 @@ export default function Router() {
           <SignUp />
         </PublicRoute>
         {/* Private routes */}
+        <PrivateRoute path={PAGES.SEARCH} exact>
+          <Search />
+        </PrivateRoute>
         <PrivateRoute path={PAGES.UPLOAD} exact>
           <Upload />
         </PrivateRoute>

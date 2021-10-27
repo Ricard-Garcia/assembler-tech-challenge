@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
-import { FaRegCopy, FaLink } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 
 import { PAGES } from "../../constants/routes";
 
@@ -37,7 +37,7 @@ export default function SingleMeme() {
 
   useEffect(() => {
     loadMeme();
-  }, []);
+  });
 
   return (
     <Layout>

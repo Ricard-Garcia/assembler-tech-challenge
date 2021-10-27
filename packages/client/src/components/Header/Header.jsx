@@ -1,9 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { signOutAction } from "../../redux/user/actions";
-import { setLocalStorage } from "../../utils/localStorage";
 import { PAGES } from "../../constants/routes";
 
 import Button from "../Button";

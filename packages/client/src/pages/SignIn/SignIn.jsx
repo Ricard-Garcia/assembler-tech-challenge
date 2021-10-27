@@ -8,7 +8,6 @@ import { PAGES } from "../../constants/routes";
 import { signIn } from "../../services/auth";
 import { authenticateUser } from "../../api/user-api";
 import { signInAction } from "../../redux/user/actions";
-import { setLocalStorage } from "../../utils/localStorage";
 
 import signInSchema from "./sign-in-in-schema";
 

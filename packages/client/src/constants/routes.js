@@ -1,12 +1,10 @@
-// const { API_MAIN_ROUTE } = process.env;
-
 // PAGES
 export const PAGES = {
   HOME: "/",
   SIGN_IN: "/sign-in",
   SIGN_UP: "/sign-up",
   SINGLE_MEME: "/single-meme",
-  FOUND: "/found",
+  SEARCH: "/search",
   UPLOAD: "/upload",
   NOT_FOUND: "/not-found",
 };
