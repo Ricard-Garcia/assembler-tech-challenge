@@ -23,7 +23,6 @@ export default function SingleMeme() {
     // setIsLoading(true);
     try {
       const meme = await getMeme(memeId);
-      console.log(meme.data.data.tagId.name);
       setMeme(meme.data.data);
     } catch (error) {
       console.log(error);
@@ -37,7 +36,7 @@ export default function SingleMeme() {
 
   useEffect(() => {
     loadMeme();
-  });
+  }, []);
 
   return (
     <Layout>
