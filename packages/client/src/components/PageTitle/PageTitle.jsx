@@ -13,7 +13,7 @@ export default function PageTitle({
   const location = useLocation();
 
   return (
-    <div className="d-flex justify-content-between align-items-center w-100 px-5">
+    <div className="d-flex justify-content-between align-items-center w-100 px-5 mb-5">
       <h1 className="fnt-light fnt-thin m-0 text-uppercase">
         {title}
         {subtitle && <p className="fnt-bold d-inline-block mb-0">{subtitle}</p>}

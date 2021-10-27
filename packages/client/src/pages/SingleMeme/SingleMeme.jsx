@@ -54,11 +54,16 @@ export default function SingleMeme() {
               </div>
               {/* url */}
               <div className="mb-4">
-                <p className="fnt-light fnt-label fnt-bold mb-2">url</p>
+                <div className="d-flex">
+                  <p className="fnt-light fnt-label fnt-bold mb-2 me-2">url</p>
+                  <button
+                    className="link-button d-flex"
+                    onClick={handleCopyUrl}
+                  >
+                    <FaLink />
+                  </button>
+                </div>
                 <p className="fnt-light fnt-text fnt-regular">{meme.url}</p>
-                <Button handleClick={handleCopyUrl}>
-                  <FaLink />
-                </Button>
               </div>
               {/* Tag */}
               <div className="mb-4">

@@ -1,5 +1,12 @@
+@use "../../sass/components/colors" as c;
+
 .meme-image {
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.link-button {
+  border: none;
+  color: c.$lightColor;
 }
