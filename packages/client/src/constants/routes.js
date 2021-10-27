@@ -7,6 +7,7 @@ export const PAGES = {
   SEARCH: "/search",
   UPLOAD: "/upload",
   NOT_FOUND: "/not-found",
+  CATEGORY: "/category",
 };
 
 // API
@@ -17,6 +18,7 @@ export const API = {
   AUTHENTICATE: "/authenticate",
   USERS: "/users",
   MEMES: "/memes",
+  CATEGORY: "/category",
   TAGS: "/tags",
   SEARCH: "/search",
   UPLOAD: "/upload",

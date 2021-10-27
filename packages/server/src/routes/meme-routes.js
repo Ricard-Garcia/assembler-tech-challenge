@@ -31,4 +31,11 @@ memeRouter.post(
   memeController.uploadMeme
 );
 
+// Get meme
+memeRouter.get(
+  `${SERVER.TAGS}/:tag`,
+  authFirebaseMiddleware,
+  memeController.getTaggedMemes
+);
+
 module.exports = { memeRouter };

@@ -16,8 +16,6 @@ export default function SingleMeme() {
   const [meme, setMeme] = useState({});
 
   const { memeId } = useRouteMatch(`${PAGES.SINGLE_MEME}/:memeId`).params;
-  //   const location = useLocation();
-  //   const history = useHistory();
 
   const loadMeme = async () => {
     // setIsLoading(true);

@@ -51,3 +51,12 @@ export async function uploadMeme(memeData = {}, api = makeMemeApi()) {
     },
   });
 }
+
+// Get memes under tag
+export async function getTaggedMemes(tag, api = makeMemeApi()) {
+  const token = await getCurrentUserToken();
+
+  return api.get(`${API.TAGS}/${tag}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}

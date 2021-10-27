@@ -124,4 +124,39 @@ async function uploadMeme(req, res, next) {
   }
 }
 
-module.exports = { getMeme, getAllMemes, uploadMeme };
+// Get memes under tag
+async function getTaggedMemes(req, res, next) {
+  try {
+    const { tag } = req.params;
+
+    const foundTag = await db.Tag.find(
+      {
+        name: tag,
+      },
+      { name: 1, _id: 1 }
+    );
+
+    console.log("FOUND>>>>>", foundTag);
+    const data = await db.Meme.find(
+      {
+        tagId: foundTag[0]._id,
+      },
+      {
+        name: 1,
+        url: 1,
+        _id: 1,
+      }
+    );
+
+    return res
+      .status(200)
+      .send({ message: "Successfully searched tagged memes", memes: data });
+  } catch (error) {
+    res.status(500).send({
+      error: error.message,
+    });
+    next(error);
+  }
+}
+
+module.exports = { getMeme, getAllMemes, uploadMeme, getTaggedMemes };

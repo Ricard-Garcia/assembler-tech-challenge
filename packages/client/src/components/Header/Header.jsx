@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { signOutAction } from "../../redux/user/actions";
@@ -47,6 +47,49 @@ export default function Header() {
       </Link>
       {userState.isLogged && (
         <div className="header-left d-flex align-items-center">
+          {/* Categories */}
+          <div className="categoryies-wrapper">
+            {/* Funny */}
+            <NavLink
+              className="fnt-text fnt-bold"
+              activeClassName="active-navlink"
+              to={{
+                pathname: `${PAGES.CATEGORY}/funny`,
+                state: {
+                  referrer: location.pathname,
+                },
+              }}
+            >
+              Funny
+            </NavLink>
+            {/* Angry */}
+            <NavLink
+              className="fnt-text fnt-bold"
+              activeClassName="active-navlink"
+              to={{
+                pathname: `${PAGES.CATEGORY}/angry`,
+                state: {
+                  referrer: location.pathname,
+                },
+              }}
+            >
+              Angry
+            </NavLink>
+            {/* Sad */}
+            <NavLink
+              className="fnt-text fnt-bold"
+              activeClassName="active-navlink"
+              to={{
+                pathname: `${PAGES.CATEGORY}/sad`,
+                state: {
+                  referrer: location.pathname,
+                },
+              }}
+            >
+              Sad
+            </NavLink>
+          </div>
+
           <p className="fnt-text fnt-regular m-0">
             Welcome, <span className="fnt-bold">{userState.firstName}</span>
           </p>
