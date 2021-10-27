@@ -20,16 +20,6 @@ export default function Header() {
   const handleSignOut = () => {
     setIsLoading(true);
     dispatch(signOutAction());
-    // setLocalStorage(
-    //   {
-    //     email: "",
-    //     firstName: "",
-    //     isLogged: false,
-    //     mongoId: "",
-    //     profilePicture: "",
-    //   },
-    //   "User state"
-    // );
   };
 
   return (
