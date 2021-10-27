@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { SERVER } = require("./constants/routes");
 
-const { authRouter, memeRouter /* , tagRouter */ } = require("./routes");
+const { authRouter, userRouter, memeRouter } = require("./routes");
 
 // Express settings
 const app = express();
@@ -17,7 +17,7 @@ app.use(helmet());
 app.use(cors());
 
 app.use(`${SERVER.API}`, authRouter);
+app.use(`${SERVER.API}${SERVER.USERS}`, userRouter);
 app.use(`${SERVER.API}${SERVER.MEMES}`, memeRouter);
-// app.use(`${SERVER.TAGS}`, tagRouter);
 
 module.exports = app;

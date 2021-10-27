@@ -15,8 +15,9 @@ export const API = {
   PROFILE_PICTURE_API: "https://randomuser.me/api/",
   REGISTER: "/register",
   AUTHENTICATE: "/authenticate",
+  USERS: "/users",
   MEMES: "/memes",
+  SEARCH: "/search",
   UPLOAD: "/upload",
   FILE: "/file",
-  SEARCH: "/search",
 };

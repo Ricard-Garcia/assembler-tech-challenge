@@ -6,6 +6,7 @@ import "./Home.scss";
 
 import { PAGES } from "../../constants/routes";
 import searchSchema from "./search-schema";
+import { getAllUsers } from "../../api/user-api";
 import { getAllMemes } from "../../api/meme-api";
 
 import Layout from "../../components/Layout";
@@ -14,6 +15,7 @@ import MemeList from "../../components/MemeList";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
+  const [usersList, setUsersList] = useState([]);
   const [memesList, setMemesList] = useState([]);
 
   const location = useLocation();
@@ -26,6 +28,17 @@ export default function Home() {
     try {
       const memes = await getAllMemes();
       setMemesList(memes.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
+
+  const loadAllUsers = async () => {
+    setIsLoading(true);
+    try {
+      const users = await getAllUsers();
+      setUsersList(users.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -51,12 +64,9 @@ export default function Home() {
   });
 
   useEffect(() => {
+    loadAllUsers();
     loadAllMemes();
   }, []);
-
-  useEffect(() => {
-    console.log(memesList);
-  }, [memesList]);
 
   return (
     <Layout>
@@ -88,15 +98,22 @@ export default function Home() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.searchbar}
-            errorMessage={formik.errors.searchbar}
-            hasErrorMessage={formik.touched.searchbar}
             disabled={isLoading}
           />
         </form>
         {/* Users & tags */}
         <div className="users-tags-wrapper row p-0 m-0 col col-6 row p-0 m-0">
-          <div className="col col-6">Users list</div>
-          <div className="col col-6">Tags list</div>
+          <div className="col col-6 p-0">
+            <p className="fnt-label fnt-light">Users list</p>
+            {usersList.map((user) => (
+              <div className="fnt-light" key={user._id}>
+                {user.firstName}
+              </div>
+            ))}
+          </div>
+          <div className="col col-6 p-0">
+            <p className="fnt-label fnt-light">Tags list</p>
+          </div>
         </div>
       </div>
       <div className="home-bottom container-fluid p-0">

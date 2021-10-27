@@ -4,6 +4,12 @@ import { getCurrentUserToken } from "../services/auth";
 const axios = require("axios").default;
 
 // Default API calls
+function makeUsersApi() {
+  return axios.create({
+    baseURL: `${API.MAIN}${API.USERS}`,
+  });
+}
+
 function makeRegisterApi() {
   return axios.create({
     baseURL: `${API.MAIN}${API.REGISTER}`,
@@ -30,6 +36,16 @@ export async function registerUser(userData = {}, api = makeRegisterApi()) {
 export function authenticateUser(token) {
   return axios.get(`${API.MAIN}${API.AUTHENTICATE}`, {
     headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
+// Get all users
+export async function getAllUsers(api = makeUsersApi()) {
+  const token = await getCurrentUserToken();
+  return api.get("/", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 }
 

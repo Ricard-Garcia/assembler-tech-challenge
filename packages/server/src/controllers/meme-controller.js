@@ -43,7 +43,7 @@ async function getAllMemes(req, res, next) {
     });
   } catch (error) {
     res.status(500).send({
-      message: "Couldn't get the meme.",
+      message: "Couldn't get memes.",
       error: error.message,
     });
     next(error);
