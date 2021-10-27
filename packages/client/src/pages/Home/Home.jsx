@@ -7,6 +7,7 @@ import "./Home.scss";
 import { PAGES } from "../../constants/routes";
 import searchSchema from "./search-schema";
 import { getAllUsers } from "../../api/user-api";
+import { getAllTags } from "../../api/tag-api";
 import { getAllMemes } from "../../api/meme-api";
 
 import Layout from "../../components/Layout";
@@ -16,6 +17,7 @@ import MemeList from "../../components/MemeList";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [usersList, setUsersList] = useState([]);
+  const [tagsList, setTagsList] = useState([]);
   const [memesList, setMemesList] = useState([]);
 
   const location = useLocation();
@@ -23,22 +25,33 @@ export default function Home() {
   const history = useHistory();
 
   // Initial loading
-  const loadAllMemes = async () => {
+  const loadAllUsers = async () => {
     setIsLoading(true);
     try {
-      const memes = await getAllMemes();
-      setMemesList(memes.data.data);
+      const users = await getAllUsers();
+      setUsersList(users.data.data);
     } catch (error) {
       console.log(error);
     }
     setIsLoading(false);
   };
 
-  const loadAllUsers = async () => {
+  const loadAllTags = async () => {
     setIsLoading(true);
     try {
-      const users = await getAllUsers();
-      setUsersList(users.data.data);
+      const tags = await getAllTags();
+      setTagsList(tags.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
+
+  const loadAllMemes = async () => {
+    setIsLoading(true);
+    try {
+      const memes = await getAllMemes();
+      setMemesList(memes.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -65,6 +78,7 @@ export default function Home() {
 
   useEffect(() => {
     loadAllUsers();
+    loadAllTags();
     loadAllMemes();
   }, []);
 
@@ -113,6 +127,11 @@ export default function Home() {
           </div>
           <div className="col col-6 p-0">
             <p className="fnt-label fnt-light">Tags list</p>
+            {tagsList.map((tag) => (
+              <div className="fnt-light" key={tag._id}>
+                {tag.name}
+              </div>
+            ))}
           </div>
         </div>
       </div>

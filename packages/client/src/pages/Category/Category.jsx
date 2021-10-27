@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
+import { PAGES } from "../../constants/routes";
+import { getAllMemes } from "../../api/meme-api";
 import { searchUsers, searchMemes, searchTags } from "../../api/search-api";
 
 import Layout from "../../components/Layout";
 import Button from "../../components/Button";
 import MemeList from "../../components/MemeList";
 
-export default function Search() {
+export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [foundUsers, setFoundUsers] = useState([]);
   const [foundMemes, setFoundMemes] = useState([]);
@@ -22,6 +24,7 @@ export default function Search() {
       setFoundUsers(data.users);
     } catch (error) {
       console.log(error);
+      //  setFoundTracks({ ...foundTracks, loaded: true });
     }
   };
 
@@ -32,6 +35,7 @@ export default function Search() {
       setFoundMemes(data.memes);
     } catch (error) {
       console.log(error);
+      //  setFoundTracks({ ...foundTracks, loaded: true });
     }
   };
 
@@ -42,6 +46,7 @@ export default function Search() {
       setFoundTags(data.tags);
     } catch (error) {
       console.log(error);
+      //  setFoundTracks({ ...foundTracks, loaded: true });
     }
   };
 
@@ -72,11 +77,7 @@ export default function Search() {
         {/* Found users */}
         <div className="found-wrapper">
           <p className="fnt-label fnt-light px-5">Found users</p>
-          {foundUsers.map((user) => (
-            <div className="fnt-light" key={user._id}>
-              {user.firstName}
-            </div>
-          ))}
+          {/* <MemeList memes={memesList} /> */}
         </div>
         {/* Found memes by name */}
         <div className="found-wrapper">

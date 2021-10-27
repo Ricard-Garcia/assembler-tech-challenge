@@ -43,7 +43,7 @@ export default function SingleMeme() {
       {!isLoading && (
         <>
           <div className="d-flex justify-content-between align-items-center mb-5 px-5 w-100">
-            <h1 className="fnt-light fnt-thin m-0 text-uppercase container-fluid ">
+            <h1 className="fnt-light fnt-thin m-0 text-uppercase container-fluid p-0">
               Meme overview
             </h1>
             <Button isBackButton isDark>

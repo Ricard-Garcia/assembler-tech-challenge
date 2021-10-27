@@ -8,6 +8,7 @@ const {
   authRouter,
   searchRouter,
   userRouter,
+  tagRouter,
   memeRouter,
 } = require("./routes");
 
@@ -24,6 +25,7 @@ app.use(cors());
 app.use(`${SERVER.API}`, authRouter);
 app.use(`${SERVER.API}${SERVER.SEARCH}`, searchRouter);
 app.use(`${SERVER.API}${SERVER.USERS}`, userRouter);
+app.use(`${SERVER.API}${SERVER.TAGS}`, tagRouter);
 app.use(`${SERVER.API}${SERVER.MEMES}`, memeRouter);
 
 module.exports = app;
