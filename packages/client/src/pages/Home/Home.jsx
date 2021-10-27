@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useFormik } from "formik";
 
 import "./Home.scss";
@@ -29,7 +30,7 @@ export default function Home() {
       const users = await getAllUsers();
       setUsersList(users.data.data);
     } catch (error) {
-      console.log(error);
+      return toast(error.message, { type: "error" });
     }
     setIsLoading(false);
   };
@@ -40,7 +41,7 @@ export default function Home() {
       const tags = await getAllTags();
       setTagsList(tags.data.data);
     } catch (error) {
-      console.log(error);
+      return toast(error.message, { type: "error" });
     }
     setIsLoading(false);
   };
@@ -51,7 +52,7 @@ export default function Home() {
       const memes = await getAllMemes();
       setMemesList(memes.data.data);
     } catch (error) {
-      console.log(error);
+      return toast(error.message, { type: "error" });
     }
     setIsLoading(false);
   };
@@ -69,7 +70,7 @@ export default function Home() {
           history.push(`${PAGES.SEARCH}?q=${searchState.searchbar}`);
         }
       } catch (error) {
-        console.log("Couldn't sign in: ", error);
+        return toast(error.message, { type: "error" });
       }
     },
   });

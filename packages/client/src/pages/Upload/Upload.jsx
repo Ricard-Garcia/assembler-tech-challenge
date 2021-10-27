@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 
@@ -65,7 +66,12 @@ export default function Upload() {
         }
 
         // Redirect to home
-        history.push(PAGES.HOME);
+        setTimeout(() => {
+          history.push(PAGES.HOME);
+        }, 1000);
+        return toast("Correctly uploaded meme! Redirecting to home.", {
+          type: "success",
+        });
       } catch (error) {
         console.log("Couldn't upload meme: ", error);
       }

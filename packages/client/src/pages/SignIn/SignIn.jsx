@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 
 import { PAGES } from "../../constants/routes";
@@ -58,7 +59,7 @@ export default function SignIn() {
           history.push(PAGES.HOME);
         }, 300);
       } catch (error) {
-        console.log("Couldn't sign in: ", error);
+        return toast(error.message, { type: "error" });
       }
     },
   });

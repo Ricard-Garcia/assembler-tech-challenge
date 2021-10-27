@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 
 import "./App.css";
 
@@ -8,6 +9,7 @@ function App() {
   return (
     <>
       <RouterWrapper />
+      <ToastContainer draggable theme="colored" />
     </>
   );
 }

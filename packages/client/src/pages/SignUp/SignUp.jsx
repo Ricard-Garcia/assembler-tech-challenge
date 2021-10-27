@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useFormik } from "formik";
 
 import { PAGES } from "../../constants/routes";
@@ -52,8 +53,11 @@ export default function SignUp() {
         setTimeout(() => {
           history.push(PAGES.SIGN_IN);
         }, 1000);
+        return toast("Correctly signed up! Redirecting to sign in.", {
+          type: "success",
+        });
       } catch (error) {
-        console.log("Couldn't sign up: ", error);
+        return toast(error, { type: "error" });
       }
     },
   });

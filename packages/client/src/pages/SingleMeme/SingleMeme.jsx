@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import { FaLink } from "react-icons/fa";
 
 import { PAGES } from "../../constants/routes";
@@ -10,7 +12,6 @@ import "./SingleMeme.scss";
 
 import Layout from "../../components/Layout";
 import PageTitle from "../../components/PageTitle";
-import Button from "../../components/Button";
 
 export default function SingleMeme() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,18 +20,20 @@ export default function SingleMeme() {
   const { memeId } = useRouteMatch(`${PAGES.SINGLE_MEME}/:memeId`).params;
 
   const loadMeme = async () => {
-    // setIsLoading(true);
+    setIsLoading(true);
     try {
       const meme = await getMeme(memeId);
       setMeme(meme.data.data);
+      console.log(meme.data.data.tagId.name);
     } catch (error) {
-      console.log(error);
+      return toast(error.message, { type: "error" });
     }
     setIsLoading(false);
   };
 
   const handleCopyUrl = () => {
     navigator.clipboard.writeText(meme.url);
+    return toast("Copied url to clipboard!", { type: "success" });
   };
 
   useEffect(() => {

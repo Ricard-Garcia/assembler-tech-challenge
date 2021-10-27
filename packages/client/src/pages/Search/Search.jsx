@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { searchUsers, searchMemes, searchTags } from "../../api/search-api";
 
 import Layout from "../../components/Layout";
 import PageTitle from "../../components/PageTitle";
 import FoundWrapper from "../../components/FoundWrapper";
-import MemeList from "../../components/MemeList";
 
 export default function Search() {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,31 +19,37 @@ export default function Search() {
   // Users
   const loadFoundUsers = async () => {
     try {
+      setIsLoading(true);
       const { data } = await searchUsers(searchQuery);
       setFoundUsers(data.users);
     } catch (error) {
-      console.log(error);
+      return toast(error.message, { type: "error" });
     }
+    setIsLoading(false);
   };
 
   // Memes
   const loadFoundMemes = async () => {
     try {
+      setIsLoading(true);
       const { data } = await searchMemes(searchQuery);
       setFoundMemes(data.memes);
     } catch (error) {
-      console.log(error);
+      return toast(error.message, { type: "error" });
     }
+    setIsLoading(false);
   };
 
   // Tags
   const loadFoundTags = async () => {
     try {
+      setIsLoading(true);
       const { data } = await searchTags(searchQuery);
       setFoundTags(data.tags);
     } catch (error) {
-      console.log(error);
+      return toast(error.message, { type: "error" });
     }
+    setIsLoading(false);
   };
 
   //  General search

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { getTaggedMemes } from "../../api/meme-api";
 
@@ -20,11 +21,13 @@ export default function Home() {
   // Memes
   const loadFoundMemes = async () => {
     try {
+      setIsLoading(true);
       const { data } = await getTaggedMemes(tagName);
       setTaggedMemes(data.memes);
     } catch (error) {
-      console.log(error);
+      return toast(error.message, { type: "error" });
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
