@@ -4,6 +4,7 @@ const SERVER = {
   REGISTER: "/register",
   AUTHENTICATE: "/authenticate",
   USERS: "/users",
+  SEARCH: "/search",
   MEMES: "/memes",
   TAGS: "/tags",
   UPLOAD: "/upload",

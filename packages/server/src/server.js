@@ -4,7 +4,12 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { SERVER } = require("./constants/routes");
 
-const { authRouter, userRouter, memeRouter } = require("./routes");
+const {
+  authRouter,
+  searchRouter,
+  userRouter,
+  memeRouter,
+} = require("./routes");
 
 // Express settings
 const app = express();
@@ -17,6 +22,7 @@ app.use(helmet());
 app.use(cors());
 
 app.use(`${SERVER.API}`, authRouter);
+app.use(`${SERVER.API}${SERVER.SEARCH}`, searchRouter);
 app.use(`${SERVER.API}${SERVER.USERS}`, userRouter);
 app.use(`${SERVER.API}${SERVER.MEMES}`, memeRouter);
 

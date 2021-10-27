@@ -1,6 +1,6 @@
 const { authRouter } = require("./auth-routes");
+const { searchRouter } = require("./search-routes");
 const { userRouter } = require("./user-routes");
 const { memeRouter } = require("./meme-routes");
-// const { tagRouter } = require("./tag-routes");
 
-module.exports = { authRouter, userRouter, memeRouter };
+module.exports = { authRouter, searchRouter, userRouter, memeRouter };

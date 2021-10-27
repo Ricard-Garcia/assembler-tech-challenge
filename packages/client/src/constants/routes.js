@@ -17,6 +17,7 @@ export const API = {
   AUTHENTICATE: "/authenticate",
   USERS: "/users",
   MEMES: "/memes",
+  TAGS: "/tags",
   SEARCH: "/search",
   UPLOAD: "/upload",
   FILE: "/file",

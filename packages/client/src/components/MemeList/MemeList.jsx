@@ -12,6 +12,7 @@ export default function MemeList({ title, memes = [] }) {
           <MemeCard
             key={meme._id}
             memeId={meme._id}
+            memeName={meme.name}
             memeUrl={meme.url}
             cols="4"
           />

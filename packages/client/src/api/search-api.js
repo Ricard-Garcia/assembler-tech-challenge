@@ -11,7 +11,7 @@ export function makeSearchApi() {
 }
 
 // Search user
-export async function searchUser(search, api = makeSearchApi()) {
+export async function searchUsers(search, api = makeSearchApi()) {
   const token = await getCurrentUserToken();
 
   return api.get(`${API.USERS}/?q=${search}`, {
@@ -22,7 +22,7 @@ export async function searchUser(search, api = makeSearchApi()) {
 }
 
 // Search meme
-export async function searchMeme(search, api = makeSearchApi()) {
+export async function searchMemes(search, api = makeSearchApi()) {
   const token = await getCurrentUserToken();
 
   return api.get(`${API.MEMES}/?q=${search}`, {
@@ -33,7 +33,7 @@ export async function searchMeme(search, api = makeSearchApi()) {
 }
 
 // Search tag
-export async function searchTag(search, api = makeSearchApi()) {
+export async function searchTags(search, api = makeSearchApi()) {
   const token = await getCurrentUserToken();
 
   return api.get(`${API.TAGS}/?q=${search}`, {

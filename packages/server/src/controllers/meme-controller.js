@@ -53,8 +53,6 @@ async function getAllMemes(req, res, next) {
 // Get upload meme
 async function uploadMeme(req, res, next) {
   try {
-    console.log("Meme upload req.files ", req.files["file"][0]);
-    console.log("Meme upload req.body ", req.body);
     // General settings
     const { firebaseId } = req.user;
     const { _id: userId } = await db.User.findOne({ firebaseId });
