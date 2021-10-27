@@ -5,7 +5,7 @@ import { searchUsers, searchMemes, searchTags } from "../../api/search-api";
 
 import Layout from "../../components/Layout";
 import PageTitle from "../../components/PageTitle";
-import Button from "../../components/Button";
+import FoundWrapper from "../../components/FoundWrapper";
 import MemeList from "../../components/MemeList";
 
 export default function Search() {
@@ -63,24 +63,11 @@ export default function Search() {
       <PageTitle title="Found items with:&nbsp;" subtitle={searchQuery} />
       <div className="page-bottom container-fluid p-0">
         {/* Found users */}
-        <div className="found-wrapper">
-          <p className="fnt-label fnt-light px-5">Found users</p>
-          {foundUsers.map((user) => (
-            <div className="fnt-light" key={user._id}>
-              {user.firstName}
-            </div>
-          ))}
-        </div>
+        <FoundWrapper title="Found users" users={foundUsers} />
         {/* Found memes by name */}
-        <div className="found-wrapper">
-          <p className="fnt-label fnt-light px-5">Found memes by name</p>
-          <MemeList memes={foundMemes} />
-        </div>
+        <FoundWrapper title="Found memes by name" memes={foundMemes} />
         {/* Found memes by tag */}
-        <div className="found-wrapper">
-          <p className="fnt-label fnt-light px-5">Found memes by tag</p>
-          <MemeList memes={foundTags} />
-        </div>
+        <FoundWrapper title="Found memes by tag" memes={foundTags} />
       </div>
     </Layout>
   );
